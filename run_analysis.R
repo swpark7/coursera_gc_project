@@ -36,6 +36,6 @@ run_analysis <- function() {
     #Aggregate
     library(reshape2)
     MeltM <- melt(m, id=c("subject", "activity"), measure.vars=names(m)[which(!(names(m) %in% c("subject", "activity")))])
-    agg <- aggregate(value ~ subject + activity + variable, data=MeltM, mean)
-    write.csv(agg, file="analysis_results.csv", row.names=FALSE)
+    agg <- aggregate(value ~ activity + variable, data=MeltM, mean)
+    write.table(agg, file="analysis_results.txt", row.names=FALSE )
 }
